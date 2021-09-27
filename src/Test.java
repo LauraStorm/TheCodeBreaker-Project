@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class Test {
 
     //Methods//
@@ -13,6 +15,36 @@ public class Test {
         char indexToCharacter = alphabet.charAt(index-1);
 
         return indexToCharacter;
+    }
+
+    public static String numberCypherEncoder (String wordInput){
+        String encodedString = "";
+
+        for (int i = 0; i < wordInput.length() ; i++) {
+            char stringToIndex = wordInput.charAt(i);
+            int charIndex = alphabet.indexOf(stringToIndex) + 1;
+
+            encodedString = encodedString + charIndex + ";";
+        }
+        return encodedString;
+
+    }
+
+    public static String numberCypherDecoder (String [] numbersInput){
+        String decodedString = "";
+
+        for (int i = 0; i < numbersInput.length; i++) {
+            String indexAsString = numbersInput[i];
+            int stringToInt =Integer.parseInt(indexAsString)-1;
+
+            char indexToCharacter = alphabet.charAt(stringToInt);
+
+            decodedString = decodedString + indexToCharacter ++;
+
+
+        }
+        return decodedString;
+
     }
 
     public static String ceasarEncoder (String word){
@@ -48,6 +80,8 @@ public class Test {
 
 
     public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        /*
 
         //ceasarEncoder//
         String word = "hello";
@@ -103,13 +137,61 @@ public class Test {
             System.out.println(decodedChar + " char");
         }
 
+         */
+
+        String wordBen = "ben";
+        String encodedBen = numberCypherEncoder(wordBen);
+        System.out.println(encodedBen);
+        String [] encodedBenArray = encodedBen.split(";");
+
+        String decodeNumbers = numberCypherDecoder(encodedBenArray);
+        System.out.println(decodeNumbers);
 
 
 
 
 
+/*
+        int wordBenEncoded;
+        for (int i = 0; i < wordBenArray.length; i++) {
+            char currentCharacter = wordBen.charAt(i);
+            wordBenEncoded = characterToIndex(currentCharacter);
+            System.out.println(wordBenEncoded);
 
 
+        }
+
+ */
+
+
+        //Mangler at printe i array:
+
+        //System.out.println("\n----------------------------");
+        //System.out.println("numberCypherDecoder");
+
+
+
+        //System.out.println("----------------------------");
+
+
+        //Number cypher//
+
+        //Encoder: numberCypherEncoder
+        //Input from User
+        System.out.println("Please write a word and i will encode it in numbers:");
+        String userWord = scanner.next();
+        String wordEncoded = numberCypherEncoder(userWord);
+        System.out.println(wordEncoded);
+        String [] arrayResult = wordEncoded.split(";");
+
+        //decoder her:
+        String decodedWord = numberCypherDecoder(arrayResult);
+        System.out.println(decodedWord);
+
+        System.out.println("----------------------------");
+
+
+        //Decoder:
 
     }
 }
