@@ -1,3 +1,4 @@
+import java.util.Locale;
 import java.util.Scanner;
 
 public class Test {
@@ -49,38 +50,41 @@ public class Test {
 
     public static String ceasarEncoder (String word){
         int[] wordArray = new int[word.length()];
+        String encodedString = "";
 
         for (int i = 0; i < word.length(); i++) {
             char wordIndex = word.charAt(i);
             int charIndex = characterToIndex(wordIndex);
 
             int charIndexShift = (charIndex + 3) % alphabet.length();
-            char encodedString = indexToCharacter(charIndexShift);
+            char encodedChar = indexToCharacter(charIndexShift);
 
-            System.out.print(encodedString);
+            encodedString = encodedString + encodedChar;
 
-        } return " ";
+        } return encodedString;
     }
 
     public static String ceasarDecoder (String word){
         int[] wordArray = new int[word.length()];
+        String decodedString = "";
 
         for (int i = 0; i < word.length(); i++) {
             char wordIndex = word.charAt(i);
             int charIndex = characterToIndex(wordIndex);
 
             int charIndexShift = (charIndex - 3) % alphabet.length();
-            char encodedString = indexToCharacter(charIndexShift);
+            char decodedChar = indexToCharacter(charIndexShift);
 
-            System.out.print(encodedString);
+            decodedString = decodedString + decodedChar;
 
-        } return " ";
+        } return decodedString;
     }
 
 
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+
         /*
 
         //ceasarEncoder//
@@ -137,7 +141,7 @@ public class Test {
             System.out.println(decodedChar + " char");
         }
 
-         */
+
 
         String wordBen = "ben";
         String encodedBen = numberCypherEncoder(wordBen);
@@ -146,6 +150,8 @@ public class Test {
 
         String decodeNumbers = numberCypherDecoder(encodedBenArray);
         System.out.println(decodeNumbers);
+
+         */
 
 
 

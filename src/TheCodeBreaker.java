@@ -48,32 +48,34 @@ public class TheCodeBreaker {
 
     public static String ceasarEncoder (String word){
         int[] wordArray = new int[word.length()];
+        String encodedString = "";
 
         for (int i = 0; i < word.length(); i++) {
             char wordIndex = word.charAt(i);
             int charIndex = characterToIndex(wordIndex);
 
             int charIndexShift = (charIndex + 3) % alphabet.length();
-            char encodedString = indexToCharacter(charIndexShift);
+            char encodedChar = indexToCharacter(charIndexShift);
 
-            System.out.print(encodedString);
+            encodedString = encodedString + encodedChar;
 
-        } return " ";
+        } return encodedString;
     }
 
     public static String ceasarDecoder (String word){
         int[] wordArray = new int[word.length()];
+        String decodedString = "";
 
         for (int i = 0; i < word.length(); i++) {
             char wordIndex = word.charAt(i);
             int charIndex = characterToIndex(wordIndex);
 
             int charIndexShift = (charIndex - 3) % alphabet.length();
-            char encodedString = indexToCharacter(charIndexShift);
+            char decodedChar = indexToCharacter(charIndexShift);
 
-            System.out.print(encodedString);
+            decodedString = decodedString + decodedChar;
 
-        } return " ";
+        } return decodedString;
     }
 
 
@@ -81,16 +83,13 @@ public class TheCodeBreaker {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-
         //Intro
         System.out.println("------------------------------------\n");
         System.out.println("Welcome to - The code breaker 🔐 🔓");
         System.out.println("\n------------------------------------");
 
 
-        //Number cypher//
-
-        //Encoder
+        //Number Cypher Encoder//
         System.out.println("\n----------------------------");
         System.out.println("** NumberCypherEncoder **");
         System.out.println("----------------------------");
@@ -100,11 +99,13 @@ public class TheCodeBreaker {
         String word = scanner.next();
         word = word.toLowerCase(Locale.ROOT);
 
-        //Encode word
+        //Encoded word
         String wordEncodedToNumbers =  numberCypherEncoder(word);
-        System.out.println("\nHere is your word encoded to numbers: \n" + wordEncodedToNumbers);
+        String encodedToNumbersResult ="\nHere is your word encoded to numbers: \n" + wordEncodedToNumbers;
+        System.out.println(encodedToNumbersResult);
 
-       //Decoder:
+
+       //Number Cypher Decoder//
         System.out.println("\n----------------------------");
         System.out.println("** NumberCypherDecoder **");
         System.out.println("----------------------------");
@@ -112,39 +113,44 @@ public class TheCodeBreaker {
         System.out.println("NOW! - Let's say your friend received your encoded message in numbers and wanted to decode it!🔓\n");
         System.out.println("Received encoded word in numbers: \n" + wordEncodedToNumbers);
 
-        //encoded word
+        //encoded word array
         String[] encodedWordArrayResult = wordEncodedToNumbers.split(";");                 //we use encoded word and put it in an array and split the numbers
-        String decodedToWord = numberCypherDecoder(encodedWordArrayResult);
-        String decodedWordResult = "\nDecoded to word: \n" + decodedToWord;
+
+        //decode word
+        String decodedWord = numberCypherDecoder(encodedWordArrayResult);
+        String decodedWordResult = "\nDecoded word: \n" + decodedWord;
         System.out.println(decodedWordResult);
 
 
-        //Ceasar cypher//
-
-        //CeasarEncoder
+        //Ceasar Cypher Encoder//
         System.out.println("\n----------------------------");
         System.out.println("** CeasarEncoder **");
         System.out.println("----------------------------");
 
         //Get a word
-        System.out.println("Let's try Ceasar cypher and encode a word!🔐\nPlease write one word:");
+        System.out.println("Let's try Ceasar cypher and encode a word!🔐\nPlease write one word to encode:");
         String wordInput = scanner.next();
         wordInput = wordInput.toLowerCase(Locale.ROOT);
 
         //Encode word
-        System.out.println("\nHere is your encoded word using Ceasar cypher:");
         String wordEncodedCeasar = ceasarEncoder(wordInput);
-        System.out.println(wordEncodedCeasar);
+        String resultEncodedCeasar = "\nHere is your encoded word using Ceasar cypher:\n" + wordEncodedCeasar;
+        System.out.println(resultEncodedCeasar);
 
-        //CeasarDecoder
+
+        //Ceasar Cypher Decoder//
         System.out.println("\n----------------------------");
         System.out.println("** CeasarDecoder **");
         System.out.println("----------------------------");
 
         //Get a word
-        String word2 = "khoor";
-        String word2DecodedCeasar = ceasarDecoder(word2);
-        System.out.println(word2DecodedCeasar);
+        System.out.println("Now we have an encoded word - let's decode it!🔓\n");
+        System.out.println("Encoded word:\n" + wordEncodedCeasar +"\n");
+
+        //Decode word
+        String wordDecodedCeasar = ceasarDecoder(wordEncodedCeasar);
+        String ResultDecodedCeasar = "Decoded word:\n" + wordDecodedCeasar;
+        System.out.println(ResultDecodedCeasar);
 
 
 
